@@ -152,8 +152,31 @@ input {
   
   <br><br>
   
-  <button class="btn" onclick="orderNow()">🔥 Limited Offer ₹999 (Free Delivery)</button>
+  <button class="btn" onclick="orderNow('Glow Strip LED')">Buy Now</button>
+<button class="btn" onclick="orderNow('Smart LED Bulb')">Buy Now</button>
+<button class="btn" onclick="orderNow('RGB Light Bar')">Buy Now</button>
 </div>
+</section>
+    <section style="text-align:center; margin-top:50px;">
+  <h2>🔥 Our Products</h2>
+
+  <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
+
+    <div style="background:#111; padding:20px; border-radius:15px; width:200px;">
+      <img src="logo.jpeg" style="width:100%; border-radius:10px;">
+      <h3>Glow Strip LED</h3>
+      <p>₹999</p>
+      <button class="btn" onclick="orderNow()">Buy Now</button>
+    </div>
+
+    <div style="background:#111; padding:20px; border-radius:15px; width:200px;">
+      <img src="logo.jpeg" style="width:100%; border-radius:10px;">
+      <h3>Smart LED Bulb</h3>
+      <p>₹499</p>
+      <button class="btn" onclick="orderNow()">Buy Now</button>
+    </div>
+
+  </div>
 </section>
 
 <section class="features">
@@ -193,7 +216,7 @@ input {
 
 
 <script>
-function orderNow() {
+function orderNow(product) {
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
   let address = document.getElementById("address").value;
@@ -206,7 +229,7 @@ if(phone.length < 10){
   alert("Enter valid phone number");
   return;
 }
- let message = `Hi I want to order GlowNexus LED
+let message = `Hi I want to order ${product}
 Name: ${name}
 Phone: ${phone}
 Address: ${address}`;
