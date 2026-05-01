@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <title>GlowFlex</title>
 
 <style>
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: 'poppins',sans-serif;
     background: radial-gradient(circle, #0f172a, #020617);
     color: white;
 }
@@ -42,7 +43,30 @@ header {
     border-radius: 20px;
     margin: 20px 0;
 }
+input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
 
+.btn {
+    background: #22c55e;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #4ade80;
+    transform: scale(1.05);
+}
 /* Button */
 .btn {
     background: #22c55e;
@@ -150,15 +174,7 @@ header {
     </div>
 </section>
 
-<!-- Overlay -->
-<div id="overlay" onclick="closePopup()"></div>
 
-<!-- Popup -->
-<div id="popup">
-    <h2>Order Placed ✅</h2>
-    <p>Your product will arrive soon</p>
-    <button class="btn" onclick="closePopup()">Close</button>
-</div>
 
 <script>
 function orderNow() {
@@ -166,20 +182,16 @@ function orderNow() {
   let phone = document.getElementById("phone").value;
   let address = document.getElementById("address").value;
 
-  let message = `Hi I want to order GlowFlex LED
+ let message = `Hi I want to order GlowFlex LED
 Name: ${name}
 Phone: ${phone}
 Address: ${address}`;
-
   let url = "https://wa.me/919541060347?text=" + encodeURIComponent(message);
 
   window.open(url, "_blank");
 }
 
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
+
 </script>
 
 </body>
