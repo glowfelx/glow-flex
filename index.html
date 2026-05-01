@@ -181,7 +181,15 @@ function orderNow() {
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
   let address = document.getElementById("address").value;
+if(name === "" || phone === "" || address === ""){
+  alert("Please fill all details!");
+  return;
+}
 
+if(phone.length < 10){
+  alert("Enter valid phone number");
+  return;
+}
  let message = `Hi I want to order GlowFlex LED
 Name: ${name}
 Phone: ${phone}
