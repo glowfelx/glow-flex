@@ -283,6 +283,11 @@ document.querySelectorAll(".zoom").forEach(img => {
     document.getElementById("popupImg").src = img.src;
   }
 });
+  img.onclick = () => {
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("popupImg").src = img.src;
+  }
+});
 
 document.getElementById("popup").onclick = () => {
   document.getElementById("popup").style.display = "none";
