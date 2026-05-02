@@ -168,9 +168,8 @@ input {
 
   <div style="background:#111; padding:20px; border-radius:15px; width:200px;">
    
-  <div style="display:flex; overflow-x:auto; gap:10px;">
-
- <img id="stripSlider" src="strip1.jpeg" 
+  <div style="display:flex; justify-content:center;">
+ <img id="stripSlider" class="slider-img" src="strip1.jpeg">
 style="width:120px; height:120px; object-fit:cover; border-radius:10px;">
 
 </div>
@@ -294,8 +293,14 @@ let stripIndex = 0;
 
 setInterval(() => {
   stripIndex = (stripIndex + 1) % stripImages.length;
-  document.getElementById("stripSlider").src = stripImages[stripIndex];
-}, 2000);
+ let stripImg = document.getElementById("stripSlider");
+
+stripImg.style.opacity = 0;
+
+setTimeout(() => {
+  stripImg.src = stripImages[stripIndex];
+  stripImg.style.opacity = 1;
+}, 300);
 
 
 let bulbImages = ["bulb1.jpeg", "bulb2.jpeg", "bulb3.jpeg"];
