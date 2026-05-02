@@ -3,325 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <title>GlowNexus</title>
 
 <style>
+
 body {
-    margin: 0; 
-    font-family: 'poppins',sans-serif;
-    background: radial-gradient(circle, #0f172a, #020617);
-    color: white;
+  margin: 0;
+  font-family: 'poppins', sans-serif;
+  background: radial-gradient(circle, #0f172a, #020617);
+  color: white;
 }
-    img {
+
+/* PRODUCT SECTION */
+.products {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.products-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+  background: #111;
+  padding: 20px;
+  border-radius: 15px;
+  width: 230px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,255,0,0.1);
+}
+
+/* IMAGE */
+.card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
   transition: 0.3s;
 }
-img:hover {
-  transform: scale(1.05);
+
+.card img:hover {
+  transform: scale(1.1);
 }
-#stripSlider {
-  width: 120px !important;
-  height: 120px !important;
-  object-fit: cover;
+
+/* BUTTON */
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
   border-radius: 10px;
-}
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
+  background: #a3ff12;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-/* Hero */
-.hero {
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.hero h1 {
-    font-size: 48px;
-    text-shadow: 0 0 20px #22c55e;
-    animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 10px #22c55e; }
-    to { text-shadow: 0 0 30px #4ade80; }
-}
-
-.hero img {
-  width: 260px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px #00ffcc;
-}
-input {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-}
-
-.btn {
-    background: #22c55e;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #4ade80;
-    transform: scale(1.05);
-}
-/* Button */
-.btn {
-    background: #22c55e;
-    padding: 15px 30px;
-    border: none;
-    color: black;
-    font-size: 18px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: scale(1.1);
-    background: #4ade80;
-}
-
-/* Features */
-.features {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 60px;
-}
-
-.card {
-    background: #111827;
-    padding: 20px;
-    border-radius: 15px;
-    width: 200px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-/* Popup */
-#popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #111827;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 30px #22c55e;
-    text-align: center;
-}
-
-/* Overlay */
-#overlay {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    top: 0;
-    left: 0;
-}
 </style>
 </head>
 
 <body>
 
-<header>
-    <div>GlowNexus</div>
-    <div>Limited Stock</div>
-</header>
+<section class="products">
+<h2>🔥 Our Products</h2>
 
-<section class="hero">
-    <h1>Upgrade Your Room Instantly</h1>
+<div class="products-container">
 
- <img src="logo.jpeg" style="width:200px; border-radius:20px;">
-    <p>Smart LED lights with app control & music sync</p>
-
-   <div style="margin-top:20px;">
-  <input id="name" placeholder="Your Name" style="padding:10px;margin:5px;">
-  <input id="phone" placeholder="Phone Number" style="padding:10px;margin:5px;">
-  <input id="address" placeholder="Address" style="padding:10px;margin:5px;">
-  
-  <br><br>
-  
-  <button class="btn" onclick="document.querySelector('.products').scrollIntoView()">View Products</button>
-</div>
-</section>
-    <section style="text-align:center; margin-top:50px;">
-  <h2>🔥 Our Products</h2>
-
-  <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
-
-  <div style="background:#111; padding:20px; border-radius:15px; width:200px;">
-   
-  
-  <div style="display:flex; gap:10px; justify-content:center;">
-  <img src="strip1.jpeg" style="width:120px; height:120px; border-radius:10px;">
-  <img src="strip2.jpeg" style="width:120px; height:120px; border-radius:10px;">
-  <img src="strip3.jpeg" style="width:120px; height:120px; border-radius:10px;">
-</div>
-    <h3>Glow Strip LED</h3>
-    <p>₹999</p>
-   <button class="btn" onclick="addToCart('Glow Strip LED')">Add to Cart</button>
-      <button class="btn" onclick="orderNow('Glow Strip LED')">Order Now</button>
-  </div>
-
-  <div style="background:#111; padding:20px; border-radius:15px; width:200px;">
-
-  
-    
-  <div style="display:flex; gap:10px; justify-content:center;">
-  <img src="bulb1.jpeg" style="width:120px; height:120px; border-radius:10px;">
-  <img src="bulb2.jpeg" style="width:120px; height:120px; border-radius:10px;">
-  <img src="bulb3.jpeg" style="width:120px; height:120px; border-radius:10px;">
+<!-- STRIP -->
+<div class="card">
+  <img id="stripSlider" src="strip1.jpeg">
+  <h3>Glow Strip LED</h3>
+  <p>₹999</p>
+  <button class="btn" onclick="addToCart('Glow Strip LED')">Add to Cart</button>
+  <button class="btn" onclick="orderNow('Glow Strip LED')">Order Now</button>
 </div>
 
+<!-- BULB -->
+<div class="card">
+  <img id="bulbSlider" src="bulb1.jpeg">
   <h3>Smart LED Bulb</h3>
   <p>₹499</p>
- <button class="btn" onclick="addToCart('Smart LED Bulb')">Add to Cart</button>
-<button class="btn" onclick="orderNow('Smart LED Bulb')">Order Now</button>
+  <button class="btn" onclick="addToCart('Smart LED Bulb')">Add to Cart</button>
+  <button class="btn" onclick="orderNow('Smart LED Bulb')">Order Now</button>
 </div>
 
-  <div style="background:#111; padding:20px; border-radius:15px; width:200px;">
-
-  
-   
-      <div style="display:flex; gap:10px; justify-content:center;">
-  <img src="bar1.jpeg" style="width:120px; height:120px; border-radius:10px;">
-  <img src="bar2.jpeg" style="width:120px; height:120px; border-radius:10px;">
-  <img src="bar3.jpeg" style="width:120px; height:120px; border-radius:10px;">
-</div>
-
+<!-- BAR -->
+<div class="card">
+  <img id="barSlider" src="bar1.jpeg">
   <h3>RGB Light Bar</h3>
   <p>₹699</p>
- <button class="btn" onclick="addToCart('RGB Light Bar')">Add to Cart</button>
-<button class="btn" onclick="orderNow('RGB Light Bar')">Order Now</button>
+  <button class="btn" onclick="addToCart('RGB Light Bar')">Add to Cart</button>
+  <button class="btn" onclick="orderNow('RGB Light Bar')">Order Now</button>
 </div>
 
 </div>
-  
 </section>
-
-<section class="features">
-    <div class="card">
-        <h3>Easy Setup</h3>
-        <p>Install in minutes</p>
-    </div>
-
-    <div class="card">
-        <h3>App Control</h3>
-        <p>Control from phone</p>
-    </div>
-
-    <div class="card">
-        <h3>Music Sync</h3>
-        <p>Lights react to music</p>
-    </div>
-</section>
-<section class="reviews">
-  <h2>What Our Customers Say</h2>
-
-  <div class="review">
-    <p>"Amazing lights! My room looks premium now 🔥"</p>
-    <h4>– Rahul, Delhi</h4>
-  </div>
-
-  <div class="review">
-    <p>"Easy setup and music sync is crazy good 🎶"</p>
-    <h4>– Aman, Mumbai</h4>
-  </div>
-
-  <div class="review">
-    <p>"Worth every rupee, delivery was fast!"</p>
-    <h4>– Karan, Chandigarh</h4>
-  </div>
-</section>
-
 
 <script>
-function orderNow(product) {
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
-if(name === "" || phone === "" || address === ""){
-  alert("Please fill all details!");
-  return;
-}
-function addToCart(product) {
-  alert(product + " added to cart 🛒");
-}
-if(phone.length < 10){
-  alert("Enter valid phone number");
-  return;
-}
-let message = `Hi I want to order ${product}
-Name: ${name}
-Phone: ${phone}
-Address: ${address}`;
-  let url = "https://wa.me/919541060347?text=" + encodeURIComponent(message);
 
-  window.open(url, "_blank");
+/* ADD TO CART */
+function addToCart(product){
+  alert(product + " added to cart ✅");
 }
 
+/* ORDER NOW */
+function orderNow(product){
+  alert("Ordering: " + product);
+}
 
-</script>
-<div id="popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; justify-content:center; align-items:center;">
-  <img id="popupImg" style="max-width:90%; max-height:90%;">
-</div>
-
-<script>
-document.querySelectorAll(".zoom").forEach(img => {
-  img.onclick = () => {
-    document.getElementById("popup").style.display = "flex";
-    document.getElementById("popupImg").src = img.src;
-  }
-});
-  img.onclick = () => {
-    document.getElementById("popup").style.display = "flex";
-    document.getElementById("popupImg").src = img.src;
-  }
-});
-
-document.getElementById("popup").onclick = () => {
-  document.getElementById("popup").style.display = "none";
-};
-    // AUTO SLIDER CODE
-
-let stripImages = ["strip1.jpeg", "strip2.jpeg", "strip3.jpeg"];
+/* STRIP SLIDER */
+let stripImages = ["strip1.jpeg","strip2.jpeg","strip3.jpeg"];
 let stripIndex = 0;
 
 setInterval(() => {
   stripIndex = (stripIndex + 1) % stripImages.length;
- let stripImg = document.getElementById("stripSlider");
+  document.getElementById("stripSlider").src = stripImages[stripIndex];
+}, 2000);
 
-stripImg.style.opacity = 0;
-
-setTimeout(() => {
-  stripImg.src = stripImages[stripIndex];
-  stripImg.style.opacity = 1;
-}, 300);
-
-
-let bulbImages = ["bulb1.jpeg", "bulb2.jpeg", "bulb3.jpeg"];
+/* BULB SLIDER */
+let bulbImages = ["bulb1.jpeg","bulb2.jpeg","bulb3.jpeg"];
 let bulbIndex = 0;
 
 setInterval(() => {
@@ -329,14 +134,16 @@ setInterval(() => {
   document.getElementById("bulbSlider").src = bulbImages[bulbIndex];
 }, 2000);
 
-
-let barImages = ["bar1.jpeg", "bar2.jpeg", "bar3.jpeg"];
+/* BAR SLIDER */
+let barImages = ["bar1.jpeg","bar2.jpeg","bar3.jpeg"];
 let barIndex = 0;
 
 setInterval(() => {
   barIndex = (barIndex + 1) % barImages.length;
   document.getElementById("barSlider").src = barImages[barIndex];
 }, 2000);
+
 </script>
+
 </body>
 </html>
