@@ -14,8 +14,7 @@ body {
   background: radial-gradient(circle, #0f172a, #020617);
   color: white;
 }
-
-/* PRODUCT SECTION */
+  /* PRODUCT SECTION */
 .products {
   text-align: center;
   margin-top: 50px;
@@ -27,6 +26,33 @@ body {
   gap: 30px;
   flex-wrap: wrap;
 }
+<header style="display:flex; justify-content:space-between; align-items:center; padding:20px 40px;">
+
+  <h2>GlowNexus</h2>
+
+  <a href="https://wa.me/919541060347" target="_blank"
+     style="background:#25D366; padding:10px 15px; border-radius:10px; text-decoration:none; color:white;">
+     WhatsApp
+  </a>
+
+</header>
+  <section style="text-align:center; margin-top:30px;">
+
+  <h1>Upgrade Your Room Lighting 🔥</h1>
+  <p>Control lights with app | Music sync | Easy setup</p>
+
+  <input id="name" placeholder="Your Name" style="padding:10px; margin:5px;">
+  <input id="phone" placeholder="Phone Number" style="padding:10px; margin:5px;">
+  <input id="address" placeholder="Address" style="padding:10px; margin:5px;">
+
+  <br><br>
+
+  <button class="btn" onclick="document.querySelector('.products').scrollIntoView()">
+    View Products
+  </button>
+
+</section>
+
 
 /* CARD */
 .card {
