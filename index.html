@@ -1,20 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>GlowNexus</title>
 
 <style>
-
 body {
   margin: 0;
   font-family: 'poppins', sans-serif;
   background: radial-gradient(circle, #0f172a, #020617);
   color: white;
 }
-  /* PRODUCT SECTION */
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+header a {
+  background: #25D366;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+/* FORM */
+.hero {
+  text-align: center;
+  margin-top: 20px;
+}
+
+input {
+  padding: 10px;
+  margin: 5px;
+}
+
+/* BUTTON */
+.btn {
+  background: #a3ff00;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+}
+
+/* PRODUCTS */
 .products {
   text-align: center;
   margin-top: 50px;
@@ -26,149 +60,141 @@ body {
   gap: 30px;
   flex-wrap: wrap;
 }
-<header style="display:flex; justify-content:space-between; align-items:center; padding:20px 40px;">
 
+.card {
+  background: #111;
+  padding: 20px;
+  border-radius: 15px;
+  width: 200px;
+}
+
+.slider-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* FEEDBACK */
+.review {
+  background: #111;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
   <h2>GlowNexus</h2>
-
-  <a href="https://wa.me/919541060347" target="_blank"
-     style="background:#25D366; padding:10px 15px; border-radius:10px; text-decoration:none; color:white;">
-     WhatsApp
-  </a>
-
+  <a href="https://wa.me/919541060347" target="_blank">WhatsApp</a>
 </header>
-  <section style="text-align:center; margin-top:30px;">
 
-  <h1>Upgrade Your Room Lighting 🔥</h1>
+<section class="hero">
   <p>Control lights with app | Music sync | Easy setup</p>
 
-  <input id="name" placeholder="Your Name" style="padding:10px; margin:5px;">
-  <input id="phone" placeholder="Phone Number" style="padding:10px; margin:5px;">
-  <input id="address" placeholder="Address" style="padding:10px; margin:5px;">
+  <input id="name" placeholder="Your Name">
+  <input id="phone" placeholder="Phone Number">
+  <input id="address" placeholder="Address">
 
   <br><br>
 
   <button class="btn" onclick="document.querySelector('.products').scrollIntoView()">
     View Products
   </button>
-
 </section>
 
+<section class="products">
+  <h2>🔥 Our Products</h2>
 
-/* CARD */
-.card {
-  background: #111;
-  padding: 20px;
-  border-radius: 15px;
-  width: 230px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0,255,0,0.1);
-}
+  <div class="products-container">
 
-/* IMAGE */
-.card img {
-  width: 120px;
-  height: 120px;
-  border-radius: 10px;
-  object-fit: cover;
-  transition: 0.3s;
-}
+    <!-- STRIP -->
+    <div class="card">
+      <img id="stripSlider" class="slider-img" src="strip1.jpeg">
+      <h3>Glow Strip LED</h3>
+      <p>₹999</p>
+      <button class="btn" onclick="addToCart('Glow Strip LED')">Add to Cart</button>
+      <button class="btn" onclick="orderNow('Glow Strip LED')">Order Now</button>
+    </div>
 
-.card img:hover {
-  transform: scale(1.1);
-}
+    <!-- BULB -->
+    <div class="card">
+      <img id="bulbSlider" class="slider-img" src="bulb1.jpeg">
+      <h3>Smart LED Bulb</h3>
+      <p>₹499</p>
+      <button class="btn" onclick="addToCart('Smart LED Bulb')">Add to Cart</button>
+      <button class="btn" onclick="orderNow('Smart LED Bulb')">Order Now</button>
+    </div>
 
-/* BUTTON */
-.btn {
-  display: block;
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  background: #a3ff12;
-  font-weight: bold;
-  cursor: pointer;
-}
+    <!-- BAR -->
+    <div class="card">
+      <img id="barSlider" class="slider-img" src="bar1.jpeg">
+      <h3>RGB Light Bar</h3>
+      <p>₹699</p>
+      <button class="btn" onclick="addToCart('RGB Light Bar')">Add to Cart</button>
+      <button class="btn" onclick="orderNow('RGB Light Bar')">Order Now</button>
+    </div>
 
-</style>
-</head>
-
-<body>
+  </div>
+</section>
 
 <section class="products">
-<h2>🔥 Our Products</h2>
+  <h2>Customer Reviews</h2>
 
-<div class="products-container">
+  <div class="review">
+    <p>"Amazing lights, looks premium!"</p>
+    <h4>- Aman, Mumbai</h4>
+  </div>
 
-<!-- STRIP -->
-<div class="card">
-  <img id="stripSlider" src="strip1.jpeg">
-  <h3>Glow Strip LED</h3>
-  <p>₹999</p>
-  <button class="btn" onclick="addToCart('Glow Strip LED')">Add to Cart</button>
-  <button class="btn" onclick="orderNow('Glow Strip LED')">Order Now</button>
-</div>
-
-<!-- BULB -->
-<div class="card">
-  <img id="bulbSlider" src="bulb1.jpeg">
-  <h3>Smart LED Bulb</h3>
-  <p>₹499</p>
-  <button class="btn" onclick="addToCart('Smart LED Bulb')">Add to Cart</button>
-  <button class="btn" onclick="orderNow('Smart LED Bulb')">Order Now</button>
-</div>
-
-<!-- BAR -->
-<div class="card">
-  <img id="barSlider" src="bar1.jpeg">
-  <h3>RGB Light Bar</h3>
-  <p>₹699</p>
-  <button class="btn" onclick="addToCart('RGB Light Bar')">Add to Cart</button>
-  <button class="btn" onclick="orderNow('RGB Light Bar')">Order Now</button>
-</div>
-
-</div>
+  <div class="review">
+    <p>"Worth every rupee, delivery fast!"</p>
+    <h4>- Karan, Chandigarh</h4>
+  </div>
 </section>
 
 <script>
-
-/* ADD TO CART */
-function addToCart(product){
-  alert(product + " added to cart ✅");
+function addToCart(product) {
+  alert(product + " added to cart");
 }
 
-/* ORDER NOW */
-function orderNow(product){
-  alert("Ordering: " + product);
+function orderNow(product) {
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+
+  if(name === "" || phone === "" || address === "") {
+    alert("Fill all details first");
+    return;
+  }
+
+  let msg = `Order: ${product}%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}`;
+  window.open("https://wa.me/919541060347?text=" + msg);
 }
 
-/* STRIP SLIDER */
-let stripImages = ["strip1.jpeg","strip2.jpeg","strip3.jpeg"];
-let stripIndex = 0;
+/* SLIDERS */
+let strip = ["strip1.jpeg","strip2.jpeg","strip3.jpeg"];
+let bulb = ["bulb1.jpeg","bulb2.jpeg","bulb3.jpeg"];
+let bar = ["bar1.jpeg","bar2.jpeg","bar3.jpeg"];
 
-setInterval(() => {
-  stripIndex = (stripIndex + 1) % stripImages.length;
-  document.getElementById("stripSlider").src = stripImages[stripIndex];
-}, 2000);
+let i=0,j=0,k=0;
 
-/* BULB SLIDER */
-let bulbImages = ["bulb1.jpeg","bulb2.jpeg","bulb3.jpeg"];
-let bulbIndex = 0;
+setInterval(()=>{
+  i=(i+1)%strip.length;
+  document.getElementById("stripSlider").src=strip[i];
+},2000);
 
-setInterval(() => {
-  bulbIndex = (bulbIndex + 1) % bulbImages.length;
-  document.getElementById("bulbSlider").src = bulbImages[bulbIndex];
-}, 2000);
+setInterval(()=>{
+  j=(j+1)%bulb.length;
+  document.getElementById("bulbSlider").src=bulb[j];
+},2000);
 
-/* BAR SLIDER */
-let barImages = ["bar1.jpeg","bar2.jpeg","bar3.jpeg"];
-let barIndex = 0;
-
-setInterval(() => {
-  barIndex = (barIndex + 1) % barImages.length;
-  document.getElementById("barSlider").src = barImages[barIndex];
-}, 2000);
-
+setInterval(()=>{
+  k=(k+1)%bar.length;
+  document.getElementById("barSlider").src=bar[k];
+},2000);
 </script>
 
 </body>
