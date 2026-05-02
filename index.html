@@ -176,6 +176,7 @@ style="width:120px; height:120px; object-fit:cover; border-radius:10px;">
     <h3>Glow Strip LED</h3>
     <p>₹999</p>
    <button class="btn" onclick="addToCart('Glow Strip LED')">Add to Cart</button>
+      <button class="btn" onclick="orderNow('Glow Strip LED')">Order Now</button>
   </div>
 
   <div style="background:#111; padding:20px; border-radius:15px; width:200px;">
@@ -189,7 +190,7 @@ style="width:120px; height:120px; object-fit:cover; border-radius:10px;">
   <h3>Smart LED Bulb</h3>
   <p>₹499</p>
  <button class="btn" onclick="addToCart('Smart LED Bulb')">Add to Cart</button>
-
+<button class="btn" onclick="orderNow('Smart LED Bulb')">Order Now</button>
 </div>
 
   <div style="background:#111; padding:20px; border-radius:15px; width:200px;">
@@ -201,7 +202,7 @@ style="width:120px; height:120px; object-fit:cover; border-radius:10px;">
   <h3>RGB Light Bar</h3>
   <p>₹699</p>
  <button class="btn" onclick="addToCart('RGB Light Bar')">Add to Cart</button>
-
+<button class="btn" onclick="orderNow('RGB Light Bar')">Order Now</button>
 </div>
 
 </div>
@@ -276,7 +277,7 @@ Address: ${address}`;
 </div>
 
 <script>
-document.querySelectorAll("img").forEach(img => {
+document.querySelectorAll(".zoom").forEach(img => {
   img.onclick = () => {
     document.getElementById("popup").style.display = "flex";
     document.getElementById("popupImg").src = img.src;
