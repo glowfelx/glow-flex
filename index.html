@@ -321,21 +321,36 @@ function toggleCart(){
 }
 
 function addToCart(name,price){
-  cart.push({name,price});
+  let found = cart.find(item => item.name === name);
+
+  if(found){
+    found.qty += 1;
+  } else {
+    cart.push({name,price,qty:1});
+  }
+
   updateCart();
-  alert("Added to cart ✅");
 }
 
 function updateCart(){
-  let html="", total=0;
-  cart.forEach(item=>{
-    html+=`<p>${item.name} - ₹${item.price}</p>`;
-    total+=item.price;
-  });
-  document.getElementById("cartItems").innerHTML=html;
-  document.getElementById("total").innerText=total;
-}
+  let html="";
+  let total=0;
 
+  cart.forEach((item,index)=>{
+    html += `
+<p>
+  ${item.name} x${item.qty || 1} - ₹${item.price}
+  
+  <button onclick="addToCart('${item.name}',${item.price})">➕</button>
+  
+  <button onclick="removeItem(${index})">❌</button>
+</p>`;
+    total += item.price*(item.qty||1);
+  });
+
+  document.getElementById("cartItems").innerHTML = html;
+  document.getElementById("total").innerText = total;
+}
 function checkout(){
   if(cart.length===0){
     alert("Cart empty hai");
@@ -356,6 +371,10 @@ let i=0,j=0,k=0;
 setInterval(()=>{ i=(i+1)%strip.length; document.getElementById('stripSlider').src = strip[i]; },2000);
 setInterval(()=>{ j=(j+1)%bulb.length;  document.getElementById('bulbSlider').src  = bulb[j];  },2000);
 setInterval(()=>{ k=(k+1)%bar.length;   document.getElementById('barSlider').src   = bar[k];   },2000);
+  function removeItem(index){
+  cart.splice(index,1);
+  updateCart();
+}
 </script>
 
 </body>
