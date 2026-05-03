@@ -179,9 +179,28 @@ overflow:auto;
 <header>
   <div class="nav">
     <div class="brand">GlowNexus</div>
-    <a class="cta" href="https://wa.me/919541060347" target="_blank">WhatsApp</a>
-    <div onclick="toggleCart()" style="cursor:pointer">🛒</div>
+   <div style="display:flex; gap:10px; align-items:center;">
+
+  <a class="cta" href="https://wa.me/919541060347" target="_blank">
+    WhatsApp
+  </a>
+
+  <div onclick="toggleCart()" style="cursor:pointer; font-size:20px;">
+    🛒
   </div>
+
+  <button onclick="openAdmin()" style="
+    background:#ff4444;
+    border:none;
+    padding:10px 14px;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+  ">
+    Admin
+  </button>
+
+</div>
 </header>
 
 <section class="hero">
@@ -371,11 +390,82 @@ let i=0,j=0,k=0;
 setInterval(()=>{ i=(i+1)%strip.length; document.getElementById('stripSlider').src = strip[i]; },2000);
 setInterval(()=>{ j=(j+1)%bulb.length;  document.getElementById('bulbSlider').src  = bulb[j];  },2000);
 setInterval(()=>{ k=(k+1)%bar.length;   document.getElementById('barSlider').src   = bar[k];   },2000);
+  function openAdmin(){
+  document.getElementById("adminPanel").style.right = "0";
+}
+
+function closeAdmin(){
+  document.getElementById("adminPanel").style.right = "-350px";
+}
+
+function loginAdmin(){
+  let pass = document.getElementById("adminPass").value;
+
+  if(pass === "1234"){
+    document.getElementById("adminContent").style.display = "block";
+    alert("Login Success");
+  } else {
+    alert("Wrong Password");
+  }
+}
+
+function updatePrices(){
+  let p1 = document.getElementById("price1").value;
+  let p2 = document.getElementById("price2").value;
+  let p3 = document.getElementById("price3").value;
+
+  if(p1) document.querySelectorAll(".price")[0].innerText = "₹" + p1;
+  if(p2) document.querySelectorAll(".price")[1].innerText = "₹" + p2;
+  if(p3) document.querySelectorAll(".price")[2].innerText = "₹" + p3;
+
+  alert("Prices Updated!");
+}
   function removeItem(index){
   cart.splice(index,1);
   updateCart();
 }
 </script>
+<!-- ADMIN PANEL -->
+<div id="adminPanel" style="
+position:fixed;
+top:0;
+right:-350px;
+width:320px;
+height:100%;
+background:#0b1220;
+padding:20px;
+transition:0.3s;
+z-index:1000;
+box-shadow:-5px 0 20px rgba(0,0,0,0.5);
+">
 
+<h2>⚙ Admin Panel</h2>
+
+<input id="adminPass" placeholder="Password"
+style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none;">
+
+<button onclick="loginAdmin()" class="btn">Login</button>
+
+<div id="adminContent" style="display:none; margin-top:20px;">
+
+<h3>Change Prices</h3>
+
+<input id="price1" placeholder="Strip Price">
+<input id="price2" placeholder="Bulb Price">
+<input id="price3" placeholder="Bar Price">
+
+<br><br>
+
+<button class="btn" onclick="updatePrices()">Save</button>
+
+</div>
+
+<br><br>
+
+<button onclick="closeAdmin()" style="background:red; border:none; padding:8px; border-radius:8px;">
+Close
+</button>
+
+</div>
 </body>
 </html>
