@@ -1,94 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>GlowNexus</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
+:root{
+  --bg:#020617;
+  --card:#0b1220;
+  --accent:#a3ff00;
+  --accent-2:#00ff88;
+  --muted:#9aa4b2;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family:Poppins;
-  background:radial-gradient(circle,#0f172a,#020617);
-  color:white;
+  font-family:'Poppins';
+  color:#fff;
+  background:var(--bg);
 }
 
 /* HEADER */
 header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
+  position:sticky; top:0; z-index:50;
+  background: rgba(2,6,23,.6);
 }
-
-header a{
-  background:#25D366;
-  padding:10px 20px;
-  border-radius:10px;
-  text-decoration:none;
-  color:white;
+.nav{
+  display:flex; justify-content:space-between; padding:15px;
 }
 
 /* HERO */
-.hero{
-  text-align:center;
-  margin-top:20px;
-}
-
-.hero img{
-  height:80px;
-}
-
-/* INPUT */
-input{
-  padding:10px;
-  margin:5px;
-}
+.hero{text-align:center; padding:20px}
+.logo{height:80px}
 
 /* BUTTON */
 .btn{
-  background:#a3ff00;
-  padding:10px 20px;
-  border-radius:10px;
+  background:var(--accent);
   border:none;
-  margin:5px;
+  padding:10px;
+  border-radius:10px;
   cursor:pointer;
 }
 
 /* PRODUCTS */
-.products{
-  text-align:center;
-  margin-top:50px;
+.products{text-align:center}
+.products-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:15px;
 }
-
-.products-container{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  flex-wrap:wrap;
-}
-
 .card{
   background:#111;
-  padding:20px;
-  border-radius:15px;
-  width:220px;
-  text-align:center;
-  box-shadow:0 0 15px rgba(0,0,0,0.5);
-}
-
-.slider-img{
-  width:120px;
-  height:120px;
-  border-radius:10px;
-  object-fit:cover;
-}
-
-/* REVIEWS */
-.review{
-  background:#111;
-  margin:10px;
   padding:15px;
   border-radius:10px;
+}
+
+/* CART */
+#cartPanel{
+position:fixed;
+right:-320px;
+top:0;
+width:300px;
+height:100%;
+background:#0b1220;
+padding:20px;
+transition:0.3s;
+z-index:999;
 }
 </style>
 </head>
@@ -96,118 +76,108 @@ input{
 <body>
 
 <header>
-  <h2>GlowNexus</h2>
-
-  <a href="https://wa.me/919541060347" target="_blank">
-    WhatsApp
-  </a>
+<div class="nav">
+  <div>GlowNexus</div>
+  <div onclick="toggleCart()">🛒</div>
+</div>
 </header>
 
 <section class="hero">
-  <img src="logo.jpeg">
-  <h2>Upgrade Your Room Lighting 🔥</h2>
+<img class="logo" src="logo.jpeg">
+<h2>Upgrade Your Room Lighting</h2>
 
-  <input id="name" placeholder="Your Name">
-  <input id="phone" placeholder="Phone Number">
+<input id="name" placeholder="Name">
+<input id="phone" placeholder="Phone">
+<input id="address" placeholder="Address">
 
-  <br><br>
-
-  <button class="btn" onclick="document.querySelector('.products').scrollIntoView()">
-    View Products
-  </button>
+<br><br>
+<button class="btn" onclick="goProducts()">Shop</button>
 </section>
 
-<section class="products">
-  <h2>🔥 Our Products</h2>
+<section id="products" class="products">
 
-  <div class="products-container">
+<div class="products-grid">
 
-    <!-- STRIP -->
-    <div class="card">
-      <img id="stripSlider" class="slider-img" src="strip1.jpeg">
-      <h3>Glow Strip LED</h3>
-      <p>₹999</p>
-      <button class="btn" onclick="addToCart('Glow Strip LED')">Add to Cart</button>
-      <button class="btn" onclick="orderNow('Glow Strip LED')">Order Now</button>
-    </div>
+<div class="card">
+<img id="stripSlider" src="strip1.jpeg" width="100">
+<h3>Glow Strip</h3>
+<p>₹999</p>
+<button class="btn" onclick="addToCart('Glow Strip',999)">Add</button>
+</div>
 
-    <!-- BULB -->
-    <div class="card">
-      <img id="bulbSlider" class="slider-img" src="bulb1.jpeg">
-      <h3>Smart LED Bulb</h3>
-      <p>₹499</p>
-      <button class="btn" onclick="addToCart('Smart LED Bulb')">Add to Cart</button>
-      <button class="btn" onclick="orderNow('Smart LED Bulb')">Order Now</button>
-    </div>
+<div class="card">
+<img id="bulbSlider" src="bulb1.jpeg" width="100">
+<h3>Bulb</h3>
+<p>₹499</p>
+<button class="btn" onclick="addToCart('Bulb',499)">Add</button>
+</div>
 
-    <!-- BAR -->
-    <div class="card">
-      <img id="barSlider" class="slider-img" src="bar1.jpeg">
-      <h3>RGB Light Bar</h3>
-      <p>₹699</p>
-      <button class="btn" onclick="addToCart('RGB Light Bar')">Add to Cart</button>
-      <button class="btn" onclick="orderNow('RGB Light Bar')">Order Now</button>
-    </div>
+<div class="card">
+<img id="barSlider" src="bar1.jpeg" width="100">
+<h3>Bar</h3>
+<p>₹699</p>
+<button class="btn" onclick="addToCart('Bar',699)">Add</button>
+</div>
 
-  </div>
+</div>
 </section>
 
-<section class="products">
-  <h2>Customer Reviews</h2>
-
-  <div class="review">
-    <p>"Amazing lights, looks premium!"</p>
-    <h4>- Aman, Mumbai</h4>
-  </div>
-
-  <div class="review">
-    <p>"Worth every rupee, delivery fast!"</p>
-    <h4>- Karan, Chandigarh</h4>
-  </div>
-</section>
+<!-- CART -->
+<div id="cartPanel">
+<h2>Cart</h2>
+<div id="cartItems"></div>
+<h3>Total ₹<span id="total">0</span></h3>
+<button class="btn" onclick="checkout()">Pay</button>
+</div>
 
 <script>
 
-/* CART */
-function addToCart(product){
-  alert(product + " added to cart");
+function goProducts(){
+document.getElementById('products').scrollIntoView();
 }
 
-/* WHATSAPP ORDER */
-function orderNow(product){
-  let name=document.getElementById("name").value;
-  let phone=document.getElementById("phone").value;
+let cart=[];
 
-  if(name=="" || phone==""){
-    alert("Fill all details first");
-    return;
-  }
-
-  let msg=`Order: ${product}%0AName: ${name}%0APhone: ${phone}`;
-  window.open("https://wa.me/919541060347?text="+msg);
+function toggleCart(){
+let p=document.getElementById("cartPanel");
+p.style.right=p.style.right=="0px"?"-320px":"0px";
 }
 
-/* SLIDERS */
-let strip=["strip1.jpeg","strip2.jpeg","strip3.jpeg"];
-let bulb=["bulb1.jpeg","bulb2.jpeg","bulb3.jpeg"];
-let bar=["bar1.jpeg","bar2.jpeg","bar3.jpeg"];
+function addToCart(name,price){
+cart.push({name,price});
+updateCart();
+}
+
+function updateCart(){
+let html="", total=0;
+cart.forEach(i=>{
+html+=`<p>${i.name} - ₹${i.price}</p>`;
+total+=i.price;
+});
+document.getElementById("cartItems").innerHTML=html;
+document.getElementById("total").innerText=total;
+}
+
+function checkout(){
+if(cart.length==0){
+alert("Cart empty");
+return;
+}
+alert("Payment Successful ✅ (Demo)");
+cart=[];
+updateCart();
+}
+
+/* SLIDER */
+let s=["strip1.jpeg","strip2.jpeg","strip3.jpeg"];
+let b=["bulb1.jpeg","bulb2.jpeg","bulb3.jpeg"];
+let r=["bar1.jpeg","bar2.jpeg","bar3.jpeg"];
 
 let i=0,j=0,k=0;
 
-setInterval(()=>{
-  i=(i+1)%strip.length;
-  document.getElementById("stripSlider").src=strip[i];
-},2000);
-
-setInterval(()=>{
-  j=(j+1)%bulb.length;
-  document.getElementById("bulbSlider").src=bulb[j];
-},2000);
-
-setInterval(()=>{
-  k=(k+1)%bar.length;
-  document.getElementById("barSlider").src=bar[k];
-},2000);
+setInterval(()=>{i=(i+1)%3; stripSlider.src=s[i]},2000);
+setInterval(()=>{j=(j+1)%3; bulbSlider.src=b[j]},2000);
+setInterval(()=>{k=(k+1)%3; barSlider.src=r[k]},2000);
 
 </script>
 
