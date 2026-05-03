@@ -157,6 +157,20 @@ header{
   .trust{grid-template-columns:1fr}
   .review-grid{grid-template-columns:1fr}
 }
+
+/* ===== CART ===== */
+#cartPanel{
+position:fixed;
+right:-320px;
+top:0;
+width:300px;
+height:100%;
+background:#0b1220;
+padding:20px;
+transition:0.3s;
+z-index:999;
+overflow:auto;
+}
 </style>
 </head>
 
@@ -166,6 +180,7 @@ header{
   <div class="nav">
     <div class="brand">GlowNexus</div>
     <a class="cta" href="https://wa.me/919541060347" target="_blank">WhatsApp</a>
+    <div onclick="toggleCart()" style="cursor:pointer">🛒</div>
   </div>
 </header>
 
@@ -203,6 +218,7 @@ header{
       <div class="price-old">₹1499</div>
       <div class="price">₹999</div>
       <div class="badge">🔥 Limited Offer</div>
+      <button class="btn" onclick="addToCart('Glow Strip LED',999)">Add to Cart</button>
       <button class="btn" onclick="orderNow('Glow Strip LED')">Order Now</button>
     </div>
 
@@ -213,6 +229,7 @@ header{
       <div class="price-old">₹899</div>
       <div class="price">₹499</div>
       <div class="badge">🔥 Limited Offer</div>
+      <button class="btn" onclick="addToCart('Smart LED Bulb',499)">Add to Cart</button>
       <button class="btn" onclick="orderNow('Smart LED Bulb')">Order Now</button>
     </div>
 
@@ -223,6 +240,7 @@ header{
       <div class="price-old">₹1199</div>
       <div class="price">₹699</div>
       <div class="badge">🔥 Limited Offer</div>
+      <button class="btn" onclick="addToCart('RGB Light Bar',699)">Add to Cart</button>
       <button class="btn" onclick="orderNow('RGB Light Bar')">Order Now</button>
     </div>
 
@@ -246,18 +264,23 @@ header{
 
 <section class="faq">
   <h2>FAQs</h2>
-
   <div class="q" onclick="toggle(this)">Delivery time?</div>
   <div class="a">2–5 working days.</div>
-
   <div class="q" onclick="toggle(this)">Return policy?</div>
   <div class="a">7 days replacement on defects.</div>
-
   <div class="q" onclick="toggle(this)">Installation?</div>
   <div class="a">Easy plug & play, guide included.</div>
 </section>
 
 <a class="wa" href="https://wa.me/919541060347" target="_blank">💬</a>
+
+<!-- CART PANEL -->
+<div id="cartPanel">
+<h2>🛒 Cart</h2>
+<div id="cartItems"></div>
+<h3>Total: ₹<span id="total">0</span></h3>
+<button class="btn" onclick="checkout()">Pay Now</button>
+</div>
 
 <script>
 function goProducts(){
@@ -286,6 +309,40 @@ Address: ${address}`;
 function toggle(el){
   const ans = el.nextElementSibling;
   ans.style.display = ans.style.display==='block' ? 'none' : 'block';
+}
+
+/* ===== CART LOGIC ===== */
+let cart=[];
+
+function toggleCart(){
+  let panel=document.getElementById("cartPanel");
+  panel.style.right = panel.style.right=="0px" ? "-320px" : "0px";
+}
+
+function addToCart(name,price){
+  cart.push({name,price});
+  updateCart();
+  alert("Added to cart ✅");
+}
+
+function updateCart(){
+  let html="", total=0;
+  cart.forEach(item=>{
+    html+=`<p>${item.name} - ₹${item.price}</p>`;
+    total+=item.price;
+  });
+  document.getElementById("cartItems").innerHTML=html;
+  document.getElementById("total").innerText=total;
+}
+
+function checkout(){
+  if(cart.length===0){
+    alert("Cart empty hai");
+    return;
+  }
+  alert("Payment Successful ✅ (Demo)");
+  cart=[];
+  updateCart();
 }
 
 /* SLIDERS */
