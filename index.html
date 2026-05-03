@@ -27,7 +27,7 @@ header a {
   color: white;
 }
 
-/* FORM */
+/* HERO */
 .hero {
   text-align: center;
   margin-top: 20px;
@@ -59,7 +59,6 @@ input {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .card {
@@ -77,12 +76,18 @@ input {
   object-fit: cover;
 }
 
-/* FEEDBACK */
+/* REVIEWS */
+.reviews {
+  text-align: center;
+  margin-top: 50px;
+}
+
 .review {
   background: #111;
-  margin: 10px;
+  margin: 10px auto;
   padding: 15px;
   border-radius: 10px;
+  width: 250px;
 }
 </style>
 </head>
@@ -90,21 +95,15 @@ input {
 <body>
 
 <header>
-  <header style="display:flex; justify-content:space-between; align-items:center; padding:20px 40px;">
+  <h2>GlowNexus</h2>
 
-  <h2 style="font-size:26px;">GlowNexus</h2>
-
-  <a href="https://wa.me/919541060347" target="_blank"
-     style="background:#25D366; padding:10px 20px; border-radius:10px; text-decoration:none; color:white;">
+  <a href="https://wa.me/919541060347" target="_blank">
     WhatsApp
   </a>
-
 </header>
 
 <section class="hero">
-  <div style="text-align:center; margin-top:20px;">
   <img src="logo.jpeg" style="height:80px;">
-</div>
   <p>Control lights with app | Music sync | Easy setup</p>
 
   <input id="name" placeholder="Your Name">
@@ -123,7 +122,6 @@ input {
 
   <div class="products-container">
 
-    <!-- STRIP -->
     <div class="card">
       <img id="stripSlider" class="slider-img" src="strip1.jpeg">
       <h3>Glow Strip LED</h3>
@@ -132,7 +130,6 @@ input {
       <button class="btn" onclick="orderNow('Glow Strip LED')">Order Now</button>
     </div>
 
-    <!-- BULB -->
     <div class="card">
       <img id="bulbSlider" class="slider-img" src="bulb1.jpeg">
       <h3>Smart LED Bulb</h3>
@@ -141,7 +138,6 @@ input {
       <button class="btn" onclick="orderNow('Smart LED Bulb')">Order Now</button>
     </div>
 
-    <!-- BAR -->
     <div class="card">
       <img id="barSlider" class="slider-img" src="bar1.jpeg">
       <h3>RGB Light Bar</h3>
@@ -153,7 +149,7 @@ input {
   </div>
 </section>
 
-<section class="products">
+<section class="reviews">
   <h2>Customer Reviews</h2>
 
   <div class="review">
@@ -186,9 +182,7 @@ function orderNow(product) {
   window.open("https://wa.me/919541060347?text=" + msg);
 }
 
-/* SLIDERS */
-<script>
-
+/* SLIDER FIX */
 let strip = ["strip1.jpeg","strip2.jpeg","strip3.jpeg"];
 let bulb = ["bulb1.jpeg","bulb2.jpeg","bulb3.jpeg"];
 let bar = ["bar1.jpeg","bar2.jpeg","bar3.jpeg"];
@@ -209,7 +203,6 @@ setInterval(()=>{
   k = (k+1) % bar.length;
   document.getElementById("barSlider").src = bar[k];
 },2000);
-
 </script>
 
 </body>
