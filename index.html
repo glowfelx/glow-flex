@@ -8,7 +8,7 @@
 body{
   margin:0;
   font-family:Poppins;
-  background:#020617;
+  background:radial-gradient(circle,#0f172a,#020617);
   color:white;
 }
 
@@ -16,20 +16,22 @@ body{
 header{
   display:flex;
   justify-content:space-between;
-  padding:15px 25px;
-  background:#111;
-  position:sticky;
-  top:0;
+  align-items:center;
+  padding:20px 40px;
 }
 
-.cart-btn{
-  cursor:pointer;
+header a{
+  background:#25D366;
+  padding:10px 20px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
 }
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:20px;
+  margin-top:20px;
 }
 
 .hero img{
@@ -43,154 +45,170 @@ input{
 }
 
 /* BUTTON */
-button{
+.btn{
   background:#a3ff00;
-  border:none;
-  padding:10px;
+  padding:10px 20px;
   border-radius:10px;
+  border:none;
+  margin:5px;
   cursor:pointer;
 }
 
 /* PRODUCTS */
 .products{
   text-align:center;
+  margin-top:50px;
 }
 
-.container{
+.products-container{
   display:flex;
-  flex-wrap:wrap;
   justify-content:center;
-  gap:20px;
+  gap:25px;
+  flex-wrap:wrap;
 }
 
 .card{
   background:#111;
-  padding:15px;
-  border-radius:10px;
-  width:200px;
+  padding:20px;
+  border-radius:15px;
+  width:220px;
+  text-align:center;
+  box-shadow:0 0 15px rgba(0,0,0,0.5);
 }
 
-.card img{
+.slider-img{
   width:120px;
   height:120px;
+  border-radius:10px;
+  object-fit:cover;
 }
 
-/* CART */
-.cart{
-  position:fixed;
-  right:-300px;
-  top:0;
-  width:300px;
-  height:100%;
+/* REVIEWS */
+.review{
   background:#111;
-  padding:20px;
-  transition:0.3s;
+  margin:10px;
+  padding:15px;
+  border-radius:10px;
 }
-
-.cart.active{
-  right:0;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-<h2>GlowNexus</h2>
-<div class="cart-btn" onclick="toggleCart()">🛒 Cart</div>
+  <h2>GlowNexus</h2>
+
+  <a href="https://wa.me/919541060347" target="_blank">
+    WhatsApp
+  </a>
 </header>
 
 <section class="hero">
-<img src="logo.jpeg">
-<h2>Upgrade Your Room Lighting 🔥</h2>
+  <img src="logo.jpeg">
+  <h2>Upgrade Your Room Lighting 🔥</h2>
 
-<input id="name" placeholder="Name">
-<input id="phone" placeholder="Phone">
+  <input id="name" placeholder="Your Name">
+  <input id="phone" placeholder="Phone Number">
 
-<br>
-<button onclick="document.querySelector('.products').scrollIntoView()">Shop Now</button>
+  <br><br>
+
+  <button class="btn" onclick="document.querySelector('.products').scrollIntoView()">
+    View Products
+  </button>
 </section>
 
 <section class="products">
-<h2>Our Products</h2>
+  <h2>🔥 Our Products</h2>
 
-<div class="container">
+  <div class="products-container">
 
-<div class="card">
-<img id="strip" src="strip1.jpeg">
-<h3>Glow Strip</h3>
-<p>₹999</p>
-<button onclick="addToCart('Strip',999)">Add</button>
-</div>
+    <!-- STRIP -->
+    <div class="card">
+      <img id="stripSlider" class="slider-img" src="strip1.jpeg">
+      <h3>Glow Strip LED</h3>
+      <p>₹999</p>
+      <button class="btn" onclick="addToCart('Glow Strip LED')">Add to Cart</button>
+      <button class="btn" onclick="orderNow('Glow Strip LED')">Order Now</button>
+    </div>
 
-<div class="card">
-<img id="bulb" src="bulb1.jpeg">
-<h3>Smart Bulb</h3>
-<p>₹499</p>
-<button onclick="addToCart('Bulb',499)">Add</button>
-</div>
+    <!-- BULB -->
+    <div class="card">
+      <img id="bulbSlider" class="slider-img" src="bulb1.jpeg">
+      <h3>Smart LED Bulb</h3>
+      <p>₹499</p>
+      <button class="btn" onclick="addToCart('Smart LED Bulb')">Add to Cart</button>
+      <button class="btn" onclick="orderNow('Smart LED Bulb')">Order Now</button>
+    </div>
 
-<div class="card">
-<img id="bar" src="bar1.jpeg">
-<h3>Light Bar</h3>
-<p>₹699</p>
-<button onclick="addToCart('Bar',699)">Add</button>
-</div>
+    <!-- BAR -->
+    <div class="card">
+      <img id="barSlider" class="slider-img" src="bar1.jpeg">
+      <h3>RGB Light Bar</h3>
+      <p>₹699</p>
+      <button class="btn" onclick="addToCart('RGB Light Bar')">Add to Cart</button>
+      <button class="btn" onclick="orderNow('RGB Light Bar')">Order Now</button>
+    </div>
 
-</div>
+  </div>
 </section>
 
-<!-- CART -->
-<div class="cart" id="cart">
-<h2>Cart</h2>
-<div id="items"></div>
-<h3>Total: ₹<span id="total">0</span></h3>
+<section class="products">
+  <h2>Customer Reviews</h2>
 
-<button onclick="checkout()">Pay Now</button>
-</div>
+  <div class="review">
+    <p>"Amazing lights, looks premium!"</p>
+    <h4>- Aman, Mumbai</h4>
+  </div>
+
+  <div class="review">
+    <p>"Worth every rupee, delivery fast!"</p>
+    <h4>- Karan, Chandigarh</h4>
+  </div>
+</section>
 
 <script>
-let cart=[];
 
-function toggleCart(){
-  document.getElementById("cart").classList.toggle("active");
+/* CART */
+function addToCart(product){
+  alert(product + " added to cart");
 }
 
-function addToCart(name,price){
-  cart.push({name,price});
-  updateCart();
+/* WHATSAPP ORDER */
+function orderNow(product){
+  let name=document.getElementById("name").value;
+  let phone=document.getElementById("phone").value;
+
+  if(name=="" || phone==""){
+    alert("Fill all details first");
+    return;
+  }
+
+  let msg=`Order: ${product}%0AName: ${name}%0APhone: ${phone}`;
+  window.open("https://wa.me/919541060347?text="+msg);
 }
 
-function updateCart(){
-  let html="";
-  let total=0;
-
-  cart.forEach(item=>{
-    html+=`<p>${item.name} - ₹${item.price}</p>`;
-    total+=item.price;
-  });
-
-  document.getElementById("items").innerHTML=html;
-  document.getElementById("total").innerText=total;
-}
-
-function checkout(){
-  alert("Payment Successful (Dummy)");
-  cart=[];
-  updateCart();
-}
-
-/* SLIDER */
-let s=["strip1.jpeg","strip2.jpeg","strip3.jpeg"];
-let b=["bulb1.jpeg","bulb2.jpeg","bulb3.jpeg"];
-let r=["bar1.jpeg","bar2.jpeg","bar3.jpeg"];
+/* SLIDERS */
+let strip=["strip1.jpeg","strip2.jpeg","strip3.jpeg"];
+let bulb=["bulb1.jpeg","bulb2.jpeg","bulb3.jpeg"];
+let bar=["bar1.jpeg","bar2.jpeg","bar3.jpeg"];
 
 let i=0,j=0,k=0;
 
-setInterval(()=>{i=(i+1)%3; strip.src=s[i]},2000);
-setInterval(()=>{j=(j+1)%3; bulb.src=b[j]},2000);
-setInterval(()=>{k=(k+1)%3; bar.src=r[k]},2000);
+setInterval(()=>{
+  i=(i+1)%strip.length;
+  document.getElementById("stripSlider").src=strip[i];
+},2000);
+
+setInterval(()=>{
+  j=(j+1)%bulb.length;
+  document.getElementById("bulbSlider").src=bulb[j];
+},2000);
+
+setInterval(()=>{
+  k=(k+1)%bar.length;
+  document.getElementById("barSlider").src=bar[k];
+},2000);
+
 </script>
 
 </body>
