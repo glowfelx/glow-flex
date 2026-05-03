@@ -187,26 +187,29 @@ function orderNow(product) {
 }
 
 /* SLIDERS */
+<script>
+
 let strip = ["strip1.jpeg","strip2.jpeg","strip3.jpeg"];
 let bulb = ["bulb1.jpeg","bulb2.jpeg","bulb3.jpeg"];
 let bar = ["bar1.jpeg","bar2.jpeg","bar3.jpeg"];
 
-let i=0,j=0,k=0;
+let i=0, j=0, k=0;
 
 setInterval(()=>{
-  i=(i+1)%strip.length;
-  document.getElementById("stripSlider").src=strip[i];
+  i = (i+1) % strip.length;
+  document.getElementById("stripSlider").src = strip[i];
 },2000);
 
 setInterval(()=>{
-  j=(j+1)%bulb.length;
-  document.getElementById("bulbSlider").src=bulb[j];
+  j = (j+1) % bulb.length;
+  document.getElementById("bulbSlider").src = bulb[j];
 },2000);
 
 setInterval(()=>{
-  k=(k+1)%bar.length;
-  document.getElementById("barSlider").src=bar[k];
+  k = (k+1) % bar.length;
+  document.getElementById("barSlider").src = bar[k];
 },2000);
+
 </script>
 
 </body>
