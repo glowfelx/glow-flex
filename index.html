@@ -453,25 +453,9 @@ function checkout(){
     alert("Cart empty hai");
     return;
   }
-
-  let total = document.getElementById("total").innerText;
-
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-
-  saveOrderToSheet("Cart Order", total);
-
-  let msg = `
-New Order 🚀
-Name: ${name}
-Phone: ${phone}
-Total: ₹${total}
-`;
-
-  window.open("https://wa.me/919541060347?text=" + encodeURIComponent(msg));
-
+ let total = document.getElementById("total").innerText;
+saveOrderToSheet("Cart Order", total);
   alert("Payment Successful ✅ (Demo)");
-
   cart=[];
   updateCart();
 }
