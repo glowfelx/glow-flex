@@ -384,25 +384,19 @@ function saveOrderToSheet(product, total){
   const phone = document.getElementById('phone').value;
   const address = document.getElementById('address').value;
 
-  const formData =
-    "entry.1784203730=" + encodeURIComponent(name) +
-    "&entry.1690737215=" + encodeURIComponent(phone) +
-    "&entry.2147422277=" + encodeURIComponent(address) +
-    "&entry.1291103004=" + encodeURIComponent(product) +
-    "&entry.284845669=" + encodeURIComponent(total) +
-    "&fvv=1" +
-    "&fbzx=" + Math.random() +
-    "&pageHistory=0";
-
   fetch("https://docs.google.com/forms/d/e/1FAIpQLSeQZcKvs-GZZZfr-Nx7JOJHiER6wx8KcU4eiTLhw4oBfutyAw/formResponse", {
     method: "POST",
     mode: "no-cors",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: formData
+    body:
+      "entry.1784203730=" + encodeURIComponent(name) +
+      "&entry.1690737215=" + encodeURIComponent(phone) +
+      "&entry.2147422277=" + encodeURIComponent(address) +
+      "&entry.1291103004=" + encodeURIComponent(product) +
+      "&entry.284845669=" + encodeURIComponent(total)
   });
-}
 }
 function toggle(el){
   const ans = el.nextElementSibling;
@@ -522,7 +516,22 @@ function updatePrices(){
   cart.splice(index,1);
   updateCart();
 }
- 
+  function saveOrderToSheet(product, total){
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const address = document.getElementById('address').value;
+
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLScBEyZF9Ohj_C_DK1RJ3l92y19FVz5gm7QuSlnSLYJ3EQIrVg/formResponse?usp=header", {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body:
+      "entry.ID1=" + encodeURIComponent(name) +
+      "&entry.ID2=" + encodeURIComponent(phone) +
+      "&entry.ID3=" + encodeURIComponent(address) +
+      "&entry.ID4=" + encodeURIComponent(product) +
+      "&entry.ID5=" + encodeURIComponent(total)
+  });
 }
 </script>
 <!-- ADMIN PANEL -->
