@@ -384,19 +384,25 @@ function saveOrderToSheet(product, total){
   const phone = document.getElementById('phone').value;
   const address = document.getElementById('address').value;
 
+  const formData =
+    "entry.1784203730=" + encodeURIComponent(name) +
+    "&entry.1690737215=" + encodeURIComponent(phone) +
+    "&entry.2147422277=" + encodeURIComponent(address) +
+    "&entry.1291103004=" + encodeURIComponent(product) +
+    "&entry.284845669=" + encodeURIComponent(total) +
+    "&fvv=1" +
+    "&fbzx=" + Math.random() +
+    "&pageHistory=0";
+
   fetch("https://docs.google.com/forms/d/e/1FAIpQLSeQZcKvs-GZZZfr-Nx7JOJHiER6wx8KcU4eiTLhw4oBfutyAw/formResponse", {
     method: "POST",
     mode: "no-cors",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    body:
-      "entry.1784203730=" + encodeURIComponent(name) +
-      "&entry.1690737215=" + encodeURIComponent(phone) +
-      "&entry.2147422277=" + encodeURIComponent(address) +
-      "&entry.1291103004=" + encodeURIComponent(product) +
-      "&entry.284845669=" + encodeURIComponent(total)
+    body: formData
   });
+}
 }
 function toggle(el){
   const ans = el.nextElementSibling;
