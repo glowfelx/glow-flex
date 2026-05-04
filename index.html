@@ -379,7 +379,25 @@ Address: ${address}`;
 
   window.open('https://wa.me/919541060347?text=' + encodeURIComponent(msg));
 }
+function saveOrderToSheet(product, total){
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const address = document.getElementById('address').value;
 
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLSeQZcKvs-GZZZfr-Nx7JOJHiER6wx8KcU4eiTLhw4oBfutyAw/formResponse", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body:
+      "entry.1784203730=" + encodeURIComponent(name) +
+      "&entry.1690737215=" + encodeURIComponent(phone) +
+      "&entry.2147422277=" + encodeURIComponent(address) +
+      "&entry.1291103004=" + encodeURIComponent(product) +
+      "&entry.284845669=" + encodeURIComponent(total)
+  });
+}
 function toggle(el){
   const ans = el.nextElementSibling;
   ans.style.display = ans.style.display==='block' ? 'none' : 'block';
@@ -429,7 +447,8 @@ function checkout(){
     alert("Cart empty hai");
     return;
   }
-  saveOrderToSheet("Cart Order", total);
+ let total = document.getElementById("total").innerText;
+saveOrderToSheet("Cart Order", total);
   alert("Payment Successful ✅ (Demo)");
   cart=[];
   updateCart();
